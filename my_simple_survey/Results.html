@@ -1,0 +1,39 @@
+{{ block title }}
+    Results
+{{ endblock }}
+
+{{ block content }}
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Player's ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Result</th>
+        <th scope="col">Order</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ for player in group.get_players() }}
+        {{ if self_id == player.id_in_group }}
+          <tr class="table-primary" id="row_player_{{player.id_in_group}}">
+            <td scope="row">{{ player.id_in_group }}</td>
+            <td>{{ player.participant.name }}</td>
+            <td id="cell_player_{{player.id_in_group}}">{{ player.result }}</td>
+            <td>{{ player.rank }}</td>
+          </tr>
+        {{ else }}
+          <tr id="row_player_{{player.id_in_group}}">
+            <td scope="row">{{ player.id_in_group }}</td>
+            <td>{{ player.participant.name }}</td>
+            <td id="cell_player_{{player.id_in_group}}">{{ player.result }}</td>
+            <td>{{ player.rank }}</td>
+          </tr>
+        {{ endif }}
+      {{endfor}}
+    </tbody>
+  </table>
+
+  {{ next_button }}
+
+{{ endblock }}

@@ -1,0 +1,70 @@
+{{ block title }}
+Round {{ subsession.round_number }} / {{ Constants.num_rounds }}
+{{ endblock }}
+{{ block content }}
+
+
+  <h2>
+    {{ question }}
+  </h2>
+
+  {{ formfields }}
+
+
+  <button type="button" class="otree-btn-next btn btn-primary" onclick="sendValue()">Next</button>
+
+  <br />
+  <br />
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Player's ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Answer</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ for player in group.get_players() }}
+        {{ if self_id == player.id_in_group }}
+          <tr class="table-primary" id="row_player_{{player.id_in_group}}">
+            <td scope="row">{{ player.id_in_group }}</td>
+            <td>{{ player.participant.name }}</td>
+            <td id="cell_player_{{player.id_in_group}}"></td>
+          </tr>
+        {{ else }}
+          <tr id="row_player_{{player.id_in_group}}">
+            <td scope="row">{{ player.id_in_group }}</td>
+            <td>{{ player.participant.name }}</td>
+            <td id="cell_player_{{player.id_in_group}}"></td>
+          </tr>
+        {{ endif }}
+      {{endfor}}
+    </tbody>
+  </table>
+
+  <script>
+    let my_cell = document.getElementById("player_{{player.id_in_group}}");
+    let answer = document.getElementById("id_answer");
+    answer.focus();
+
+    function liveRecv(data) {
+      id = data.id_in_group;
+      let cell = document.getElementById(`cell_player_${id}`);
+      cell.innerHTML += data.answer;
+      let row = document.getElementById(`row_player_${id}`);
+      row.classList.add("table-danger");
+    }
+
+    function sendValue(event) {
+      let value = answer.value;
+      let number_value = Number(value);
+      let parse_value = parseFloat(value);
+      if (!isNaN(value) && !isNaN(parse_value)) {
+        liveSend(value);
+        document.getElementById("form").submit();
+      }
+    }
+
+  </script>
+
+{{ endblock }}

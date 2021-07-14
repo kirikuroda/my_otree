@@ -1,0 +1,46 @@
+{% extends "my_test/Page.html" %}
+{{ block title }}
+    Enter the answer
+{{ endblock }}
+
+{{ block content }}
+
+<div id="jspsych-target"></div>
+<input id="choice" name="choice" type="hidden">
+<script src="{% static 'my_test/js/main.js' %}"></script>
+
+<!-- {% next_button %} -->
+<!-- <button class="btn btn-primary otree-btn-next" style="display: none">次へ</button> -->
+
+    <!-- <p>
+      What is 100 - 45? Please enter the answer in the box below.
+    </p>
+
+    <table id="history" class="table">
+<tr>
+  <th>Player</th>
+  <th>Bid</th>
+</tr>
+</table>
+
+    {{ formfields }}
+    {{ next_button }} -->
+    <!-- <button type="button" class="otree-btn-next btn btn-primary" onclick="sendValue()">Send</button>
+    <script>
+      let sendbox = document.getElementById('id_subtraction_answer');
+      let inputbox = document.getElementById('id_subtraction_answer');
+      let history = document.getElementById('history');
+
+      function liveRecv(data) {
+        console.log(data);
+        console.log(data.id_in_group);
+        history.innerHTML += '<tr><td>' + data.id_in_group + '</td><td>' + data.answer + '</td></tr>';
+      }
+
+      function sendValue() {
+        console.log("send");
+        liveSend(parseInt(inputbox.value));
+      }
+
+    </script> -->
+{{ endblock }}

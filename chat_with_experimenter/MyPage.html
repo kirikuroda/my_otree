@@ -1,0 +1,20 @@
+{{ block title }}
+Chat with experimenter
+{{ endblock }}
+{{ block content }}
+
+<p>
+    In the bottom right corner of the screen,
+    there is a button to start a chat with the experimenter.
+</p>
+
+<p><i>
+    In this demo, these messages are currently being sent to oTree.org's Papercups server.
+    To set up your own server,
+    See <a href="https://otree.readthedocs.io/en/latest/admin.html#experimenter-chat">here</a>.
+</i></p>
+
+{# you should put this 'include' on every page that needs a chat widget #}
+{{ include Constants.papercups_template }}
+
+{{ endblock }}

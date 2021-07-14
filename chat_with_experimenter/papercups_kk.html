@@ -1,0 +1,30 @@
+<script>
+window.Papercups = {
+  config: {
+    accountId: "17810a01-1448-4843-851d-00343c169105",
+    title: "ヘルプセンター",
+    subtitle: "何か不明な点があればご連絡ください!!",
+    primaryColor: "#007bff",
+    greeting: "なんでも質問してください",
+    awayMessage: "",
+    newMessagePlaceholder: "Returnで送信、Shift + Returnで改行",
+    showAgentAvailability: false,
+    // agentAvailableText: "ok",
+    // agentUnavailableText: "not ok",
+    requireEmailUpfront: false,
+    iconVariant: "outlined",
+    // note: you need to set up your own Papercups chat server (quite easy).
+    baseUrl: "https://app.papercups.io",
+    customer: {
+      name: '{{participant.code}}',
+      external_id: '{{participant.code}}'
+    }
+  },
+};
+</script>
+<script
+type="text/javascript"
+async
+defer
+src="https://app.papercups.io/widget.js"
+></script>

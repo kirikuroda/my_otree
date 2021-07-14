@@ -1,0 +1,16 @@
+{{ block title }}
+    Page title
+{{ endblock }}
+{{ block content }}
+
+
+    {{ formfields }}
+
+    <p><i>
+        After the user clicks 'next', they will be directed to another website.
+        We append the user's data to the URL, for example:
+        <code>google.com/search?q=Canada</code>
+    </i></p>
+    {{ next_button }}
+
+{{ endblock }}
